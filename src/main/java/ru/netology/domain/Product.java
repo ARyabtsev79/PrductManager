@@ -5,30 +5,17 @@ public class Product {
     private String name;
     private int price;
 
+    public int getId() { return id;}
 
-    public int getId() {
-        return id;
-    }
+    public void setId(int id) { this.id = id; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public String getName() { return name; }
 
-    public String getName() {
-        return name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public int getPrice() { return price; }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
+    public void setPrice(int price) { this.price = price; }
 
 
     public Product(int id, String name, int price) {

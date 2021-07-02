@@ -1,16 +1,22 @@
 package ru.netology.repository;
 
 import ru.netology.domain.Product;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
+@Data
+@RequiredArgsConstructor
 public class ProductRepository {
     private Product[] items = new Product[0];
 
-    public void save(Product item) {
-        int length = items.length + 1;
-        Product[] tmp = new Product[length];
+    public void save(Product product) {
+        int resultLength = items.length + 1;
+        Product[] tmp = new Product[resultLength];
         System.arraycopy(items, 0, tmp, 0, items.length);
         int lastIndex = tmp.length - 1;
-        tmp[lastIndex] = item;
+        tmp[lastIndex] = product;
         items = tmp;
     }
 
@@ -22,21 +28,12 @@ public class ProductRepository {
         int length = items.length - 1;
         Product[] tmp = new Product[length];
         int index = 0;
-        for (Product item : items) {
-            if (item.getId() != id) {
-                tmp[index] = item;
+        for (Product product : items) {
+            if (product.getId() != id) {
+                tmp[index] = product;
                 index++;
             }
         }
         items = tmp;
-    }
-
-    public Product findById(int id) {
-        for (Product item : items) {
-            if (item.getId() == id) {
-                return item;
-            }
-        }
-        return null;
     }
 }
