@@ -8,10 +8,9 @@ import ru.netology.repository.ProductRepository;
 
 @AllArgsConstructor
 public class ProductManager {
-    private ProductRepository repository;
+    private final ProductRepository repository;
 
     public void add(Product item) {
-
         repository.save(item);
     }
 
@@ -30,19 +29,21 @@ public class ProductManager {
 
     public boolean matches(Product product, String search) {
         if (product instanceof Book) {
-            Book book = (Book) product;
-            if (((Book) product).getAuthor().contains(search)) {
+            if (product.getName().contains(search)) {
                 return true;
             }
-            return product.getName().contains(search);
+            return product.getAuthor().contains(search);
         }
         if (product instanceof Smartphone) {
-            Smartphone smartphone = (Smartphone) product;
-            if (((Smartphone) product).getManufacturer().contains(search)) {
+            if (product.getName().contains(search)) {
                 return true;
             }
-            return product.getName().contains(search);
+            return ((Smartphone) product).getManufacturer().contains(search);
         }
         return false;
+    }
+
+    public Product[] searchBy() {
+        return new Product[0];
     }
 }

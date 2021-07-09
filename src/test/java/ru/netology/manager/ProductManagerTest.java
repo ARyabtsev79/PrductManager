@@ -100,9 +100,18 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void shouldSearchProductByNameIfManyProducts() {
+    public void searchProductByNameIfManyProducts() {
         Product[] actual = manager.searchBy("Кондиционер");
         Product[] expected = new Product[]{};
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void searchProductByNameIfNoProducts() {
+        Product[] actual = manager.searchBy();
+        Product[] expected = new Product[]{};
+        assertArrayEquals(expected, actual);
+
+    }
+
 }
